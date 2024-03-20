@@ -1,24 +1,28 @@
-export default class Stack {
-  items: number[]
+const items = new WeakMap()
 
+export default class Stack {
   constructor() {
-    this.items = []
+    items.set(this, [])
   }
 
   push(element: number) {
-    this.items.push(element)
+    const s = items.get(this)
+    s.push(element)
   }
 
   pop() {
-    return this.items.pop()
+    const s = items.get(this)
+    return s.pop()
   }
 
   size() {
-    return this.items.length
+    const s = items.get(this)
+    return s.length
   }
 
   peek() {
-    return this.items[this.size() - 1]
+    const s = items.get(this)
+    return s[this.size() - 1]
   }
 
   isEmpty() {
@@ -26,6 +30,6 @@ export default class Stack {
   }
 
   clear() {
-    this.items = []
+    items.set(this, [])
   }
 }

@@ -1,22 +1,22 @@
 export default class Stack {
-  count: number
-  items: any
+  private _count: number
+  private _items: any
 
   constructor() {
-    this.count = 0
-    this.items = {}
+    this._count = 0
+    this._items = {}
   }
 
   push(element: number) {
-    this.items[this.count] = element
-    this.count++
+    this._items[this._count] = element
+    this._count++
   }
 
   size() {
-    return this.count
+    return this._count
   }
 
   isEmpty() {
-    return this.count === 0
+    return this._count === 0
   }
 }
